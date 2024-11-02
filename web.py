@@ -31,5 +31,20 @@ for index, todo in enumerate(todos):
         st.rerun()
 
 
+st.button("Delete all", key='delete_list')
+
+if st.session_state["delete_list"]:
+    try:
+        todos = []
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        st.rerun()
+        st.session_state["delete_list"] = False
+
+    except:
+        print()
+        st.session_state["delete_list"] = False
+
+
 
 st.session_state
