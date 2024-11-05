@@ -5,6 +5,8 @@ import random
 test121 = ["b", "a"]
 todos = functions.get_todos()
 
+st.set_page_config(layout='wide')
+
 def add_todo():
     if st.session_state["new_todo"] != "":
         todo = st.session_state["new_todo"] + "\n"
@@ -29,22 +31,5 @@ for index, todo in enumerate(todos):
         functions.write_todos(todos)
         del st.session_state[todo]
         st.rerun()
-
-
-st.button("Delete all", key='delete_list')
-
-if st.session_state["delete_list"]:
-    try:
-        todos = []
-        functions.write_todos(todos)
-        del st.session_state[todo]
-        st.rerun()
-        st.session_state["delete_list"] = False
-
-    except:
-        print()
-        st.session_state["delete_list"] = False
-
-
 
 st.session_state
